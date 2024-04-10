@@ -29,3 +29,19 @@ module "load-balancer-controller" {
     #Data from VPC MODULE
     vpc_id = module.vpc.vpc_id
 }
+
+module "rds" {
+    source = "./rds"
+
+    db_identifier = "aline-db"
+    db_name = "aline"
+    db_username = "test"
+    db_password = "password"
+    
+    db_subnet_group_name = "db-subnet-group-name"
+    private_subnets = module.vpc.private_subnets
+
+    rds_security_group_name = "rds-security-group"
+    vpc_id = module.vpc.vpc_id
+}
+
