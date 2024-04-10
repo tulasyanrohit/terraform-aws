@@ -1,6 +1,3 @@
-provider "aws" {
-    region  = "us-east-2"
-}
 
 module "vpc" {
     source = "./cluster_vpc"
@@ -47,3 +44,4 @@ module "rds" {
     rds_security_group_name = "rds-security-group"
     vpc_id = module.vpc.vpc_id
 }
+
